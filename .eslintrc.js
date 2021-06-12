@@ -13,6 +13,7 @@ module.exports = {
     yoda: 0,
     'multiline-ternary': 0,
     'no-unused-vars': 0,
+    'no-useless-return': 0,
     'no-return-assign': 0,
     'no-unused-expressions': 0,
     'no-undef': 0,

@@ -1,1 +1,4 @@
 node_modules
+run-db.sh
+stop-db.sh
+readme-personal.md
