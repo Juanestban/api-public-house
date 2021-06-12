@@ -1,1 +1,2 @@
+### iniciar app
 GET http://localhost:2500/api

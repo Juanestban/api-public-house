@@ -9,11 +9,15 @@ router.get('/', (_, res) => {
 })
 
 // usuarios
+router.use(require('./ususarios'))
 
-// categorias
+// categorias de productos
+// router.use(require(''))
 
 // productos
+// router.use(require(''))
 
 // pedidos
+// router.use(require(''))
 
 module.exports = { router, app }

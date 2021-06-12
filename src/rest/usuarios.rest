@@ -1,0 +1,35 @@
+### obtener todos los usuarios
+
+GET http://localhost:2500/api/usuarios
+
+### obtener un usuario
+GET http://localhost:2500/api/usuarios/5
+
+### crear un usuario
+POST http://localhost:2500/api/usuarios
+Content-Type: application/json
+
+{
+  "nombre": "usuario test para borrar",
+  "direccion": "- - - WHEREVER - - -",
+  "telefono": "1234324523",
+  "correo_electronico": "testCreado1@publichouse.co",
+  "contrasena": "123456",
+  "id_rol": 2
+}
+
+### actualizar un usuario
+PUT http://localhost:2500/api/usuarios/4
+Content-Type: application/json
+
+{
+  "nombre": "usuario test creado",
+  "direccion": "- - - [+] WHEREVER [+] - - -",
+  "telefono": "1234324523",
+  "correo_electronico": "testCreado@publichouse.co",
+  "contrasena": "123456",
+  "id_rol": 2
+}
+
+### eliminar un usuario
+DELETE http://localhost:2500/api/usuarios/5
