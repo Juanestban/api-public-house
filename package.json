@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./src",
     "dev": "nodemon ./src",
-    "netlify:dev": "netlify dev"
+    "netlify:dev": "netlify dev",
+    "build": "./node_modules/.bin/netlify-lambda build src"
   },
   "keywords": [],
   "author": "",
