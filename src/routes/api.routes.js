@@ -15,7 +15,7 @@ router.use(require('./ususarios'))
 router.use(require('./categoriasProductos'))
 
 // productos
-// router.use(require(''))
+router.use(require('./productos'))
 
 // pedidos
 // router.use(require(''))

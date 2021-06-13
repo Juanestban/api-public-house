@@ -2,20 +2,20 @@
 
 GET http://localhost:2500/api/categoriasProductos
 
-### obtener un usuario
+### obtener una categoria producto
 GET http://localhost:2500/api/categoriasProductos/1
 
-### crear un usuario
+### crear una categoria producto
 POST http://localhost:2500/api/categoriasProductos
 Content-Type: application/json
 
 { "nombre": "entradas -2" }
 
-### actualizar un usuario
+### actualizar una categoria producto
 PUT http://localhost:2500/api/categoriasProductos/1
 Content-Type: application/json
 
 { "nombre": "entradas" }
 
-### eliminar un usuario
+### eliminar una categoria producto
 DELETE http://localhost:2500/api/categoriasProductos/2

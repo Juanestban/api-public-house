@@ -7,3 +7,13 @@
 
 ## Node
 - version: v14.17.0 o superior
+
+
+
+## api endpoints
+
+http://localhost:2500/api/
+  - usuarios
+  - categoriasProductos
+  - productos
+  - pedidos

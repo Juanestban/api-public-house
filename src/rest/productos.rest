@@ -1,0 +1,35 @@
+### obtener todos los productos
+
+GET http://localhost:2500/api/productos
+
+### obtener un producto
+GET http://localhost:2500/api/productos/1
+
+### crear un producto
+POST http://localhost:2500/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "nachos-testing",
+  "precio": 11000,
+  "stock": 10,
+  "icono": "*falta rellenar*",
+  "imagen": "*falta rellenar*",
+  "id_categoria_producto": 1
+}
+
+### actualizar un producto
+PUT http://localhost:2500/api/productos/1
+Content-Type: application/json
+
+{
+  "nombre": "hamburguesa-testing [editado]",
+  "precio": 15000,
+  "stock": 200,
+  "icono": "*falta rellenar*",
+  "imagen": "*falta rellenar*",
+  "id_categoria_producto": 1
+}
+
+### eliminar un producto
+DELETE http://localhost:2500/api/productos/1
