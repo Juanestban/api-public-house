@@ -10,8 +10,8 @@ POST http://localhost:2500/api/productos
 Content-Type: application/json
 
 {
-  "nombre": "nachos-testing",
-  "precio": 11000,
+  "nombre": "nachos-testing 2",
+  "precio": 18000,
   "stock": 10,
   "icono": "*falta rellenar*",
   "imagen": "*falta rellenar*",

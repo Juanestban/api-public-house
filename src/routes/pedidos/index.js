@@ -5,16 +5,18 @@ const router = Router()
 // obtener todos
 router.get('/pedidos', pedidosController.encontrarTodosPedidos)
 
-// // obtener uno
+// obtener uno
 router.get('/pedidos/:id', pedidosController.encontrarPedidoPorId)
 
-// // crear
+// crear
 router.post('/pedidos', pedidosController.crearPedido)
 
-// // // actualizar
+// actualizar
 router.put('/pedidos/:id', pedidosController.actualizarPedido)
 
-// // // eliminar
+// eliminar
 router.delete('/pedidos/:id', pedidosController.eliminarPedido)
+
+router.post('/test', pedidosController.crearTest)
 
 module.exports = router

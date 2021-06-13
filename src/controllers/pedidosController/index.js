@@ -4,10 +4,15 @@ const { responseError } = require('../responseError')
 class PedidosController {
   encontrarTodosPedidos = async (_, res) => {
     try {
-      // traer el resultado INNER JOIN de la tabla ['pedido'] y ['producto_pedido']
-      // preferencia un middleware para ambas peticiones por 'GET'
-      // mostrar tambien la tabla ['estado_pedido']
-      const pedidos = await pool.query('SELECT * FROM pedido')
+      const pedidos = await pool.query(`SELECT
+        pedido.id,
+        est_ped.nombre AS estado_pedido,
+        pedido.precio_total,
+        pedido.id_usuario
+      FROM
+        pedido
+      INNER JOIN estado_pedido AS est_ped ON
+       est_ped.id = pedido.id_estado_pedido`)
       return res.status(200).json(pedidos)
     } catch {
       return responseError({ res })
@@ -16,33 +21,65 @@ class PedidosController {
 
   encontrarPedidoPorId = async (req, res) => {
     try {
-      // traer el resultado INNER JOIN de la tabla ['pedido'] y ['producto_pedido']
-      // preferencia un middleware
-      // mostrar tambien la tabla ['estado_pedido']
       const { id } = req.params
-      const pedido = await pool.query('SELECT * FROM pedido WHERE id = ?', [id])
+      const pedido = await pool.query(
+        `SELECT
+          pedido.id,
+          est_ped.nombre AS estado_pedido,
+          pedido.precio_total,
+          pedido.id_usuario
+        FROM pedido
+        INNER JOIN estado_pedido AS est_ped ON
+          est_ped.id = pedido.id_estado_pedido WHERE pedido.id = ?`,
+        [id]
+      )
       return res.status(200).json(pedido)
     } catch {
       return responseError({ res })
     }
   }
 
-  // mirar esta sentencia para mejorar
   crearPedido = async (req, res) => {
     try {
-      // primero se crea el pedido con relacion de la tabla ['estado_pedido']
-      // luego se crea producto_pedido[tabla]
-      await pool.query('INSERT INTO pedido set ?', [req.body])
+      const { body } = req
+      const pedido = {
+        precio_total: body.precio_total,
+        id_estado_pedido: 1,
+        id_usuario: body.id_usuario,
+      }
+
+      const { insertId } = await pool.query('INSERT INTO pedido set ?', [
+        pedido,
+      ])
+
+      const promiseAll = []
+      const { productos } = body
+      const productoArray = [...productos]
+      const formateadoProductos = productoArray.map((pedidoProducto) => ({
+        ...pedidoProducto,
+        id_pedido: insertId,
+      }))
+
+      formateadoProductos.forEach((producto) => {
+        const productoPromise = pool.query(
+          'INSERT INTO producto_pedido set ?',
+          [producto]
+        )
+        promiseAll.push(productoPromise)
+      })
+      await Promise.all(promiseAll)
       return res
         .status(200)
         .json({ mensaje: 'se ha creado el pedido correctamente' })
-    } catch {
+    } catch (error) {
+      console.log(error)
       return responseError({ res })
     }
   }
 
   // falta finalizar el pedido
-  // cuando finalize se ha de descontar la cantidad del pedido del stock del producto
+  // cuando finaliza se ha de disminuir la cantidad del pedido del stock del producto pedido
+  finalizarPedido = async (req, res) => {}
 
   // mirar esta sentencia
   actualizarPedido = async (req, res) => {
@@ -67,6 +104,12 @@ class PedidosController {
     } catch {
       return responseError({ res })
     }
+  }
+
+  crearTest = async (req, res) => {
+    const { insertId } = await pool.query('INSERT INTO test set ?', [req.body])
+    // console.log(response)
+    res.status(200).json({ mensaje: 'nice', idTest: insertId })
   }
 }
 

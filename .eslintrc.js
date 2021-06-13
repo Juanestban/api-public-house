@@ -17,6 +17,7 @@ module.exports = {
     'no-return-assign': 0,
     'no-unused-expressions': 0,
     'no-undef': 0,
+    camelcase: 0,
     'space-before-function-paren': 0,
   },
 }

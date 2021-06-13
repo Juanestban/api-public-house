@@ -3,10 +3,31 @@
 GET http://localhost:2500/api/pedidos
 
 ### obtener un pedidos
-GET http://localhost:2500/api/pedidos/1
+GET http://localhost:2500/api/pedidos/20
 
 ### crear un pedido
 POST http://localhost:2500/api/pedidos
+Content-Type: application/json
+
+{
+  "precio_total": 82000,
+  "productos": [
+    {
+      "cantidad": 2,
+      "precio_cantidad": 44000,
+      "id_producto": 2
+    },
+    {
+      "cantidad": 1,
+      "precio_cantidad": 48000,
+      "id_producto": 3
+    }
+  ],
+  "id_usuario": 1
+}
+
+### actualizar un pedido
+PUT http://localhost:2500/api/pedidos/1
 Content-Type: application/json
 
 {
@@ -16,25 +37,22 @@ Content-Type: application/json
       "cantidad": 2,
       "precio_cantidad": 20000,
       "id_producto": 1,
-      "id_pedido": 1,
+      "id_pedido": 1
     }
   ],
-  "id_estado_pedido": "EN PROCESO",
-  "id_usuario": 1,
-}
-
-### actualizar un pedido
-PUT http://localhost:2500/api/pedidos/1
-Content-Type: application/json
-
-{
-  "nombre": "hamburguesa-testing [editado]",
-  "precio": 15000,
-  "stock": 200,
-  "icono": "*falta rellenar*",
-  "imagen": "*falta rellenar*",
-  "id_categoria_producto": 1
+  "id_estado_pedido": 1,
+  "id_usuario": 1
 }
 
 ### eliminar un pedido
 DELETE http://localhost:2500/api/pedidos/1
+
+
+### test
+
+POST http://localhost:2500/api/test
+Content-Type: application/json
+
+{
+  "data_test": "wherever - 2"
+}
