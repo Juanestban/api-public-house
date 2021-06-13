@@ -1,0 +1,40 @@
+### obtener todos los pedidos
+
+GET http://localhost:2500/api/pedidos
+
+### obtener un pedidos
+GET http://localhost:2500/api/pedidos/1
+
+### crear un pedido
+POST http://localhost:2500/api/pedidos
+Content-Type: application/json
+
+{
+  "precio_total": "nachos-testing",
+  "productos": [
+    {
+      "cantidad": 2,
+      "precio_cantidad": 20000,
+      "id_producto": 1,
+      "id_pedido": 1,
+    }
+  ],
+  "id_estado_pedido": "EN PROCESO",
+  "id_usuario": 1,
+}
+
+### actualizar un pedido
+PUT http://localhost:2500/api/pedidos/1
+Content-Type: application/json
+
+{
+  "nombre": "hamburguesa-testing [editado]",
+  "precio": 15000,
+  "stock": 200,
+  "icono": "*falta rellenar*",
+  "imagen": "*falta rellenar*",
+  "id_categoria_producto": 1
+}
+
+### eliminar un pedido
+DELETE http://localhost:2500/api/pedidos/1

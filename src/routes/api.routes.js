@@ -18,6 +18,6 @@ router.use(require('./categoriasProductos'))
 router.use(require('./productos'))
 
 // pedidos
-// router.use(require(''))
+router.use(require('./pedidos'))
 
 module.exports = { router, app }
