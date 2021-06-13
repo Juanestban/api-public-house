@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src",
-    "dev": "nodemon ./src"
+    "dev": "nodemon ./src",
+    "netlify:dev": "netlify dev"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +16,10 @@
     "dotenv": "10.0.0",
     "express": "4.17.1",
     "mysql": "2.18.1",
-    "promise-mysql": "5.0.3"
+    "netlify-cli": "3.37.17",
+    "netlify-lambda": "2.0.8",
+    "promise-mysql": "5.0.3",
+    "serverless-http": "2.7.0"
   },
   "devDependencies": {
     "babel-eslint": "10.1.0",
