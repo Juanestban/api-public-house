@@ -1,0 +1,21 @@
+### obtener todos los categorias productos
+
+GET http://localhost:2500/api/categoriasProductos
+
+### obtener un usuario
+GET http://localhost:2500/api/categoriasProductos/1
+
+### crear un usuario
+POST http://localhost:2500/api/categoriasProductos
+Content-Type: application/json
+
+{ "nombre": "entradas -2" }
+
+### actualizar un usuario
+PUT http://localhost:2500/api/categoriasProductos/1
+Content-Type: application/json
+
+{ "nombre": "entradas" }
+
+### eliminar un usuario
+DELETE http://localhost:2500/api/categoriasProductos/2

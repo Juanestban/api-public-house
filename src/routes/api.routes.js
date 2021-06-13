@@ -12,7 +12,7 @@ router.get('/', (_, res) => {
 router.use(require('./ususarios'))
 
 // categorias de productos
-// router.use(require(''))
+router.use(require('./categoriasProductos'))
 
 // productos
 // router.use(require(''))
