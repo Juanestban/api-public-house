@@ -11,8 +11,8 @@ router.get('/pedidos/:id', pedidosController.encontrarPedidoPorId)
 // crear
 router.post('/pedidos', pedidosController.crearPedido)
 
-// actualizar
-router.put('/pedidos/:id', pedidosController.actualizarPedido)
+// finalizar pedido
+router.put('/pedidos/:id', pedidosController.finalizarPedido)
 
 // eliminar
 router.delete('/pedidos/:id', pedidosController.eliminarPedido)

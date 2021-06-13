@@ -20,4 +20,7 @@ router.use(require('./productos'))
 // pedidos
 router.use(require('./pedidos'))
 
+// productos pedidos
+router.use(require('./productoPedido'))
+
 module.exports = { router, app }

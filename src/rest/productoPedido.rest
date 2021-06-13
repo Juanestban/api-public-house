@@ -1,0 +1,6 @@
+### obtener todos los productos pedidos
+
+GET http://localhost:2500/api/productoPedido
+
+### obtener un productos pedidos
+GET http://localhost:2500/api/productoPedido/8

@@ -77,19 +77,33 @@ class PedidosController {
     }
   }
 
-  // falta finalizar el pedido
-  // cuando finaliza se ha de disminuir la cantidad del pedido del stock del producto pedido
-  finalizarPedido = async (req, res) => {}
-
-  // mirar esta sentencia
-  actualizarPedido = async (req, res) => {
+  finalizarPedido = async (req, res) => {
     try {
       const { id } = req.params
-      await pool.query('UPDATE pedido set ? WHERE id = ?', [req.body, id])
-      return res
-        .status(200)
-        .json({ mensaje: 'se ha actualizado el pedido correctamente' })
-    } catch {
+      const promiseAll = []
+      const pedidoFinalizado = {
+        id_estado_pedido: 2,
+      }
+      await pool.query('UPDATE pedido set ? WHERE id = ?', [
+        pedidoFinalizado,
+        id,
+      ])
+      const productos_pedidos = await pool.query(
+        'SELECT * FROM producto_pedido WHERE id_pedido = ?',
+        [id]
+      )
+      const productosPedidos = [...productos_pedidos]
+      productosPedidos.forEach(({ cantidad, id_producto }) => {
+        const productoStock = pool.query(
+          'UPDATE producto set stock = IFNULL(stock, 0) - ? WHERE id = ?',
+          [cantidad, id_producto]
+        )
+        promiseAll.push(productoStock)
+      })
+      await Promise.all(promiseAll)
+      res.status(200).json({ mensaje: 'compra finalizada correctamente' })
+    } catch (error) {
+      console.log(error)
       return responseError({ res })
     }
   }

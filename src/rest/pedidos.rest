@@ -26,23 +26,8 @@ Content-Type: application/json
   "id_usuario": 1
 }
 
-### actualizar un pedido
-PUT http://localhost:2500/api/pedidos/1
-Content-Type: application/json
-
-{
-  "precio_total": "nachos-testing",
-  "productos": [
-    {
-      "cantidad": 2,
-      "precio_cantidad": 20000,
-      "id_producto": 1,
-      "id_pedido": 1
-    }
-  ],
-  "id_estado_pedido": 1,
-  "id_usuario": 1
-}
+### finalizar pedido
+PUT http://localhost:2500/api/pedidos/21
 
 ### eliminar un pedido
 DELETE http://localhost:2500/api/pedidos/1
