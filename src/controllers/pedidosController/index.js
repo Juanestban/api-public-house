@@ -111,11 +111,26 @@ class PedidosController {
   eliminarPedido = async (req, res) => {
     try {
       const { id } = req.params
+      const promiseAll = []
+
+      const productos_pedidos = await pool.query(
+        'SELECT * FROM producto_pedido WHERE id_pedido = ?',
+        [id]
+      )
+      const productosPedidos = [...productos_pedidos]
+      productosPedidos.forEach(({ id }) => {
+        const prodPed = pool.query('DELETE FROM producto_pedido WHERE id = ?', [
+          id,
+        ])
+        promiseAll.push(prodPed)
+      })
+      await Promise.all(promiseAll)
       await pool.query('DELETE FROM pedido WHERE id = ?', [id])
       return res
         .status(200)
         .json({ mensaje: 'se ha eliminado el pedido correctamente' })
-    } catch {
+    } catch (error) {
+      console.log(error)
       return responseError({ res })
     }
   }

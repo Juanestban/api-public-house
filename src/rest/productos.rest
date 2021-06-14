@@ -10,12 +10,12 @@ POST http://localhost:2500/api/productos
 Content-Type: application/json
 
 {
-  "nombre": "nachos-testing 2",
-  "precio": 18000,
-  "stock": 10,
+  "nombre": "otra comida | otra categoria",
+  "precio": 20000,
+  "stock": 15,
   "icono": "*falta rellenar*",
   "imagen": "*falta rellenar*",
-  "id_categoria_producto": 1
+  "id_categoria_producto": 2
 }
 
 ### actualizar un producto
@@ -32,4 +32,4 @@ Content-Type: application/json
 }
 
 ### eliminar un producto
-DELETE http://localhost:2500/api/productos/1
+DELETE http://localhost:2500/api/productos/4

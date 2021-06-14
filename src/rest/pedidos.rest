@@ -10,16 +10,16 @@ POST http://localhost:2500/api/pedidos
 Content-Type: application/json
 
 {
-  "precio_total": 82000,
+  "precio_total": 58000,
   "productos": [
     {
       "cantidad": 2,
-      "precio_cantidad": 44000,
-      "id_producto": 2
+      "precio_cantidad": 40000,
+      "id_producto": 4
     },
     {
       "cantidad": 1,
-      "precio_cantidad": 48000,
+      "precio_cantidad": 18000,
       "id_producto": 3
     }
   ],
@@ -30,7 +30,7 @@ Content-Type: application/json
 PUT http://localhost:2500/api/pedidos/21
 
 ### eliminar un pedido
-DELETE http://localhost:2500/api/pedidos/1
+DELETE http://localhost:2500/api/pedidos/21
 
 
 ### test
