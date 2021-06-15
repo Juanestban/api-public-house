@@ -49,9 +49,26 @@ class ProductosController {
   eliminarProducto = async (req, res) => {
     try {
       const { id } = req.params
+      const promiseAll = []
+
+      const producto_pedido = await pool.query(
+        'SELECT * FROM producto_pedido WHERE id_producto = ?',
+        [id]
+      )
+
+      const ProdPed = [...producto_pedido]
+      ProdPed.forEach(({ id }) => {
+        const productoPedido = pool.query(
+          'DELETE FROM producto_pedido WHERE id = ?',
+          [id]
+        )
+        promiseAll.push(productoPedido)
+      })
+      await Promise.all(promiseAll)
       await pool.query('DELETE FROM producto WHERE id = ?', [id])
       return res.status(200).json({ mensaje: 'el producto ha sido eliminado' })
-    } catch {
+    } catch (error) {
+      console.log(error)
       return responseError({ res })
     }
   }

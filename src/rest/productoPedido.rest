@@ -3,4 +3,8 @@
 GET http://localhost:2500/api/productoPedido
 
 ### obtener un productos pedidos
-GET http://localhost:2500/api/productoPedido/8
+GET http://localhost:2500/api/productoPedido/18
+
+
+### obtener un producto pedido por el id del pedido
+GET http://localhost:2500/api/productoPedido-pedido/25

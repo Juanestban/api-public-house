@@ -32,7 +32,8 @@ class CategoriasProductos {
       return res.status(200).json({
         mensaje: 'se ha creado una categoria para los productos correctamente',
       })
-    } catch {
+    } catch (error) {
+      console.log(error)
       return responseError({ res })
     }
   }
@@ -56,6 +57,24 @@ class CategoriasProductos {
   eliminarCateProducto = async (req, res) => {
     try {
       const { id } = req.params
+      const promiseAll = []
+
+      const productos_table = await pool.query(
+        'SELECT * FROM producto WHERE id_categoria_producto = ?',
+        [id]
+      )
+      const productos = [...productos_table]
+      productos.forEach(({ id }) => {
+        const prodPedidos = pool.query(
+          'DELETE FROM producto_pedido WHERE id_producto = ?',
+          [id]
+        )
+        promiseAll.push(prodPedidos)
+      })
+      await Promise.all(promiseAll)
+      await pool.query('DELETE FROM producto WHERE id_categoria_producto = ?', [
+        id,
+      ])
       await pool.query('DELETE FROM categoria_producto WHERE id = ?', [id])
       return res
         .status(200)

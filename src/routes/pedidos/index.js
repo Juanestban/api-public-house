@@ -17,6 +17,7 @@ router.put('/pedidos/:id', pedidosController.finalizarPedido)
 // eliminar
 router.delete('/pedidos/:id', pedidosController.eliminarPedido)
 
+// test
 router.post('/test', pedidosController.crearTest)
 
 module.exports = router

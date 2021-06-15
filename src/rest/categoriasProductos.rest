@@ -9,7 +9,7 @@ GET http://localhost:2500/api/categoriasProductos/1
 POST http://localhost:2500/api/categoriasProductos
 Content-Type: application/json
 
-{ "nombre": "entradas -2" }
+{ "nombre": "entradas -3", "icono": "*falta llenar*" }
 
 ### actualizar una categoria producto
 PUT http://localhost:2500/api/categoriasProductos/1
@@ -18,4 +18,4 @@ Content-Type: application/json
 { "nombre": "entradas" }
 
 ### eliminar una categoria producto
-DELETE http://localhost:2500/api/categoriasProductos/2
+DELETE http://localhost:2500/api/categoriasProductos/1
