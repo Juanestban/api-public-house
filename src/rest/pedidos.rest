@@ -10,17 +10,12 @@ POST http://localhost:2500/api/pedidos
 Content-Type: application/json
 
 {
-  "precio_total": 58000,
+  "precio_total": 7000,
   "productos": [
     {
-      "cantidad": 2,
-      "precio_cantidad": 40000,
-      "id_producto": 4
-    },
-    {
       "cantidad": 1,
-      "precio_cantidad": 18000,
-      "id_producto": 3
+      "precio_cantidad": 7000,
+      "id_producto": 8
     }
   ],
   "id_usuario": 1
