@@ -8,6 +8,12 @@ router.get('/productos', productosController.obtenerTodosProductos)
 // obtener uno
 router.get('/productos/:id', productosController.obtenerPorId)
 
+// obtener todos por categoria
+router.get(
+  '/productosConCategorias/:idCategoria',
+  productosController.obtenerProductosDeCategorias
+)
+
 // crear
 router.post('/productos', productosController.crearProducto)
 
