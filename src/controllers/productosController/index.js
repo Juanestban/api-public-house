@@ -72,6 +72,23 @@ class ProductosController {
       return responseError({ res })
     }
   }
+
+  obtenerProductosDeCategorias = async (req, res) => {
+    try {
+      const { idCategoria } = req.params
+      const productos = await pool.query(
+        `
+      SELECT
+        *
+      FROM producto
+      WHERE id_categoria_producto = ?`,
+        [idCategoria]
+      )
+      return res.status(200).json(productos)
+    } catch {
+      return responseError({ res })
+    }
+  }
 }
 
 const productosController = new ProductosController()

@@ -5,6 +5,9 @@ GET http://localhost:2500/api/productos
 ### obtener un producto
 GET http://localhost:2500/api/productos/1
 
+### obtener todos los pedidos que tengan relacion con sus categorias
+GET http://localhost:2500/api/productosConCategorias/17
+
 ### crear un producto
 POST http://localhost:2500/api/productos
 Content-Type: application/json
